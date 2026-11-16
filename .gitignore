@@ -1,0 +1,14 @@
+# 密钥与本地中转（含公司 access-key，严禁进入公开仓库）
+ziye-agent-proxy.js
+ziye-agent.env
+启动字野.command
+
+# 大体积素材与内部设计草稿（不进仓库）
+promo/
+Claude outputs/
+
+# 旧版本副本
+字野AI.html
+
+# 系统文件
+.DS_Store
