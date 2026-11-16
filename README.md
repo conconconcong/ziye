@@ -14,6 +14,8 @@
 
 ## 使用
 
+网页地址：<https://conconconcong.github.io/ziye/>
+
 直接用浏览器打开 `index.html` 即可，无需构建、无依赖。
 
 中文字体位于 `fonts/` 目录（含毛笔字体 Ma Shan Zheng、演示秋鸿楷）。应用支持导入本地字体（TTF / OTF / WOFF / WOFF2）。
