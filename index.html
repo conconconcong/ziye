@@ -2293,7 +2293,7 @@ const ART_GRAMMAR=(()=>{
   const len=Math.min(picked.len,art.gesture==='underline'?.35+art.gestureStrength*.7:.2+art.gestureStrength*.45),o=state.chars[picked.i]??={};
   if(state.st.outline){const tip=art.gesture==='underline'?(picked.kind==='lineL'?'l':'r'):picked.kind==='sweepL'?'dl':'dr',ang=tip==='l'?176:art.gesture==='underline'?4:tip==='dl'?138:24;
    o.ow=[...(o.ow||[]),{tip,len,ang,r:.12}];state.aiArtwork.operations.push({character:Array.from(state.text.replace(/\n/g,''))[picked.i],index:picked.i,kind:art.gesture,len,mode:'outline'})
-  }else{o.k??={};o.k[picked.si]={...(o.k[picked.si]||{}),[picked.end?'x1':'x0']:[len,picked.bend]};state.aiArtwork.operations.push({character:Array.from(state.text.replace(/\n/g,''))[picked.i],index:picked.i,stroke:picked.si,kind:art.gesture,len,mode:'skeleton'})}
+  }else{o.k??={};const edit=art.gesture==='underline'?{[picked.end?'t1':'t0']:[(picked.kind==='lineL'?-1:1)*len,len*.04,-.04]}:{[picked.end?'x1':'x0']:[len,picked.bend]};o.k[picked.si]={...(o.k[picked.si]||{}),...edit};state.aiArtwork.operations.push({character:Array.from(state.text.replace(/\n/g,''))[picked.i],index:picked.i,stroke:picked.si,kind:art.gesture,len,mode:'skeleton',method:art.gesture==='underline'?'endpoint':'tail'})}
   for(let i=0;i<3;i++){const m=aiMeasure(state);if(!m)break;const box=m.u,f=Math.min(1,state.w*.87/(box.x1-box.x0),state.h*.84/(box.y1-box.y0));if(f<.998){state.size*=f;state.chars.forEach(ch=>{if(ch){ch.dx=(ch.dx||0)*f;ch.dy=(ch.dy||0)*f}})}const next=aiMeasure(state);if(next){state.cx+=(targetX-(next.u.x0+next.u.x1)/2)/state.w;state.cy+=(targetY-(next.u.y0+next.u.y1)/2)/state.h}}
   return 1}
  return{library,get,normalize,actions,base,letter,group,optical,applyGesture};
